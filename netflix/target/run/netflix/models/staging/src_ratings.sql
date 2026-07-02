@@ -1,0 +1,24 @@
+
+  
+    
+
+create or replace transient table MOVIELENS.RAW.src_ratings
+    
+    
+    
+    as (
+
+WITH raw_ratings AS (
+    SELECT * FROM MOVIELENS.RAW.RAW_RATINGS
+)
+SELECT
+    userID AS user_id,
+    movieID AS movie_id,
+    rating,
+    TO_TIMESTAMP_LTZ(timestamp) AS rating_timestamp
+FROM raw_ratings
+    )
+;
+
+
+  
